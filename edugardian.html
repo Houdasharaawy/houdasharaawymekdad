@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGuardian - منصة تعليمية متكاملة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --kashmir-primary: #8B4513;
+            --kashmir-secondary: #A0522D;
+            --kashmir-light: #CD853F;
+            --kashmir-dark: #6B3E26;
+            --kashmir-accent: #DEB887;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8f5f2;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--kashmir-primary) 0%, var(--kashmir-dark) 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(139, 69, 19, 0.1), 0 8px 10px -6px rgba(139, 69, 19, 0.1);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--kashmir-light) 0%, var(--kashmir-primary) 100%);
+        }
+        
+        .tab-active {
+            color: var(--kashmir-primary);
+            border-bottom: 3px solid var(--kashmir-primary);
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(139, 69, 19, 0.1), 0 4px 6px -2px rgba(139, 69, 19, 0.05);
+        }
+        
+        .behavior-status-good {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .behavior-status-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .behavior-status-bad {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold">
+                        <span class="text-white">Edu</span><span class="text-amber-200">Guardian</span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-1 space-x-reverse">
+                    <a href="#" class="px-3 py-2 text-white hover:text-amber-200 transition">الرئيسية</a>
+                    <a href="#" class="px-3 py-2 text-white hover:text-amber-200 transition">المميزات</a>
+                    <a href="#teachers" class="px-3 py-2 text-white hover:text-amber-200 transition">المعلمون</a>
+                    <a href="#behavior" class="px-3 py-2 text-white hover:text-amber-200 transition">السلوك</a>
+                    <a href="#" class="px-3 py-2 text-white hover:text-amber-200 transition">تواصل معنا</a>
+                </nav>
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <button class="bg-white text-[#8B4513] px-4 py-2 rounded-lg font-medium hover:bg-amber-50 transition">تسجيل الدخول</button>
+                    <button class="md:hidden text-white text-xl" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-3 pb-3">
+                <a href="#" class="block py-2 text-white hover:text-amber-200 transition">الرئيسية</a>
+                <a href="#" class="block py-2 text-white hover:text-amber-200 transition">المميزات</a>
+                <a href="#teachers" class="block py-2 text-white hover:text-amber-200 transition">المعلمون</a>
+                <a href="#behavior" class="block py-2 text-white hover:text-amber-200 transition">السلوك</a>
+                <a href="#" class="block py-2 text-white hover:text-amber-200 transition">تواصل معنا</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">منصة <span class="text-[#8B4513]">EduGuardian</span> التعليمية</h1>
+                    <p class="text-xl text-gray-600 mb-8">نظام متكامل لإدارة العملية التعليمية وتتبع تقدم الطلاب بكل سهولة وفعالية</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition">ابدأ الآن مجاناً</button>
+                        <button class="bg-white border border-[#8B4513] text-[#8B4513] px-6 py-3 rounded-lg font-medium hover:bg-amber-50 transition">عرض توضيحي</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-amber-200 rounded-full opacity-20 transform -translate-x-4 translate-y-4"></div>
+                        <svg class="w-full h-auto" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="50" width="400" height="300" rx="20" fill="#ffffff" stroke="#8B4513" stroke-width="3"/>
+                            <rect x="70" y="80" width="360" height="40" rx="5" fill="#f3e8d8"/>
+                            <rect x="80" y="90" width="200" height="20" rx="3" fill="#8B4513"/>
+                            <rect x="70" y="140" width="170" height="190" rx="5" fill="#f3e8d8"/>
+                            <rect x="260" y="140" width="170" height="90" rx="5" fill="#f3e8d8"/>
+                            <rect x="260" y="240" width="170" height="90" rx="5" fill="#f3e8d8"/>
+                            <circle cx="155" cy="180" r="30" fill="#8B4513"/>
+                            <rect x="90" y="220" width="130" height="10" rx="2" fill="#8B4513" opacity="0.7"/>
+                            <rect x="90" y="240" width="100" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="90" y="260" width="120" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="90" y="280" width="80" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="280" y="160" width="130" height="10" rx="2" fill="#8B4513" opacity="0.7"/>
+                            <rect x="280" y="180" width="100" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="280" y="200" width="120" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="280" y="260" width="130" height="10" rx="2" fill="#8B4513" opacity="0.7"/>
+                            <rect x="280" y="280" width="100" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                            <rect x="280" y="300" width="120" height="10" rx="2" fill="#8B4513" opacity="0.5"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers" class="py-16 bg-white px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">فريق المعلمين المتميز</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">نخبة من المعلمين ذوي الخبرة والكفاءة العالية لتقديم أفضل مستوى تعليمي</p>
+            </div>
+            
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex bg-amber-100 rounded-lg p-1">
+                    <button class="px-4 py-2 rounded-md text-[#8B4513] font-medium teacher-filter-btn active" data-filter="all">جميع المعلمين</button>
+                    <button class="px-4 py-2 rounded-md text-[#8B4513] font-medium teacher-filter-btn" data-filter="science">العلوم</button>
+                    <button class="px-4 py-2 rounded-md text-[#8B4513] font-medium teacher-filter-btn" data-filter="math">الرياضيات</button>
+                    <button class="px-4 py-2 rounded-md text-[#8B4513] font-medium teacher-filter-btn" data-filter="language">اللغات</button>
+                    <button class="px-4 py-2 rounded-md text-[#8B4513] font-medium teacher-filter-btn" data-filter="social">الاجتماعيات</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="science">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">د. أحمد محمود</h3>
+                                <p class="text-[#8B4513]">أستاذ الفيزياء</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">دكتوراه في الفيزياء النظرية، خبرة 15 عاماً في التدريس، حاصل على جائزة المعلم المتميز لعام 2022.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="math">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">أ. سارة الأحمد</h3>
+                                <p class="text-[#8B4513]">أستاذة الرياضيات</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">ماجستير في الرياضيات التطبيقية، خبرة 10 سنوات في تدريس الرياضيات للمراحل الثانوية والمتوسطة.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.8</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="language">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">أ. محمد العبدالله</h3>
+                                <p class="text-[#8B4513]">أستاذ اللغة العربية</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">بكالوريوس في اللغة العربية وآدابها، خبرة 12 عاماً في التدريس، متخصص في النحو والبلاغة.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.7</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teacher 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="science">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">د. فاطمة الزهراء</h3>
+                                <p class="text-[#8B4513]">أستاذة الكيمياء</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">دكتوراه في الكيمياء العضوية، خبرة 8 سنوات في التدريس، باحثة في مجال الكيمياء الحيوية.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teacher 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="social">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">أ. خالد السعيد</h3>
+                                <p class="text-[#8B4513]">أستاذ التاريخ</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">ماجستير في التاريخ الإسلامي، خبرة 14 عاماً في التدريس، مؤلف لعدة كتب في التاريخ.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.6</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teacher 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 teacher-card" data-category="language">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl mr-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">أ. نورة العتيبي</h3>
+                                <p class="text-[#8B4513]">أستاذة اللغة الإنجليزية</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">بكالوريوس في اللغة الإنجليزية، خبرة 9 سنوات في التدريس، حاصلة على شهادة TESOL.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-amber-500 mr-1"><i class="fas fa-star"></i></span>
+                                <span class="font-medium">4.8</span>
+                                <span class="text-gray-500 text-sm mr-1">/5</span>
+                            </div>
+                            <button class="text-[#8B4513] hover:text-[#A0522D] font-medium">عرض الملف الشخصي</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition">عرض جميع المعلمين</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behavior Monitoring Section -->
+    <section id="behavior" class="py-16 bg-[#f8f5f2] px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">نظام متابعة السلوك</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">متابعة شاملة لسلوك الطلاب وتقديم تقارير دورية لأولياء الأمور</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                <div class="flex border-b">
+                    <button class="flex-1 py-4 px-6 font-medium tab-active" id="tab-behavior-overview">نظرة عامة</button>
+                    <button class="flex-1 py-4 px-6 font-medium text-gray-500" id="tab-behavior-reports">التقارير</button>
+                    <button class="flex-1 py-4 px-6 font-medium text-gray-500" id="tab-behavior-rewards">المكافآت والتحفيز</button>
+                </div>
+                
+                <div class="p-6" id="behavior-content">
+                    <!-- Overview Tab Content -->
+                    <div id="behavior-overview-content">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-[#f3e8d8] rounded-lg p-6 text-center">
+                                <div class="text-4xl font-bold text-[#8B4513] mb-2">85%</div>
+                                <p class="text-gray-700">نسبة الالتزام بالسلوك الإيجابي</p>
+                            </div>
+                            <div class="bg-[#f3e8d8] rounded-lg p-6 text-center">
+                                <div class="text-4xl font-bold text-[#8B4513] mb-2">12%</div>
+                                <p class="text-gray-700">تحسن في السلوك خلال الفصل الدراسي</p>
+                            </div>
+                            <div class="bg-[#f3e8d8] rounded-lg p-6 text-center">
+                                <div class="text-4xl font-bold text-[#8B4513] mb-2">95%</div>
+                                <p class="text-gray-700">رضا أولياء الأمور عن نظام المتابعة</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">آخر تحديثات السلوك</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr class="bg-[#f3e8d8] text-[#8B4513]">
+                                        <th class="py-3 px-4 text-right">الطالب</th>
+                                        <th class="py-3 px-4 text-right">الصف</th>
+                                        <th class="py-3 px-4 text-right">الملاحظة</th>
+                                        <th class="py-3 px-4 text-right">التاريخ</th>
+                                        <th class="py-3 px-4 text-right">الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="py-3 px-4">أحمد خالد</td>
+                                        <td class="py-3 px-4">الثالث (أ)</td>
+                                        <td class="py-3 px-4">مشاركة فعالة في النشاط الصفي</td>
+                                        <td class="py-3 px-4">15/10/2023</td>
+                                        <td class="py-3 px-4"><span class="px-3 py-1 rounded-full text-sm behavior-status-good">إيجابي</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">سارة محمد</td>
+                                        <td class="py-3 px-4">الرابع (ب)</td>
+                                        <td class="py-3 px-4">تأخر عن الحصة الأولى</td>
+                                        <td class="py-3 px-4">14/10/2023</td>
+                                        <td class="py-3 px-4"><span class="px-3 py-1 rounded-full text-sm behavior-status-warning">تنبيه</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">عبدالله فهد</td>
+                                        <td class="py-3 px-4">الخامس (ج)</td>
+                                        <td class="py-3 px-4">مساعدة زملائه في المشروع الجماعي</td>
+                                        <td class="py-3 px-4">13/10/2023</td>
+                                        <td class="py-3 px-4"><span class="px-3 py-1 rounded-full text-sm behavior-status-good">إيجابي</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">نورة سعد</td>
+                                        <td class="py-3 px-4">السادس (أ)</td>
+                                        <td class="py-3 px-4">عدم إكمال الواجب المنزلي</td>
+                                        <td class="py-3 px-4">12/10/2023</td>
+                                        <td class="py-3 px-4"><span class="px-3 py-1 rounded-full text-sm behavior-status-warning">تنبيه</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">فهد عبدالعزيز</td>
+                                        <td class="py-3 px-4">الثاني (ب)</td>
+                                        <td class="py-3 px-4">سلوك غير لائق مع زميله</td>
+                                        <td class="py-3 px-4">11/10/2023</td>
+                                        <td class="py-3 px-4"><span class="px-3 py-1 rounded-full text-sm behavior-status-bad">سلبي</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Reports Tab Content (Hidden by default) -->
+                    <div id="behavior-reports-content" class="hidden">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">تقارير السلوك</h3>
+                            <p class="text-gray-600 mb-6">يمكنك الاطلاع على تقارير السلوك المختلفة وتحليلها حسب الفترة الزمنية والصف الدراسي</p>
+                            
+                            <div class="flex flex-wrap gap-4 mb-6">
+                                <div class="flex-1">
+                                    <label class="block text-gray-700 mb-2">الفترة الزمنية</label>
+                                    <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#8B4513] focus:border-transparent">
+                                        <option>الأسبوع الحالي</option>
+                                        <option>الشهر الحالي</option>
+                                        <option>الفصل الدراسي الحالي</option>
+                                        <option>العام الدراسي كامل</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-gray-700 mb-2">الصف الدراسي</label>
+                                    <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#8B4513] focus:border-transparent">
+                                        <option>جميع الصفوف</option>
+                                        <option>الصف الأول</option>
+                                        <option>الصف الثاني</option>
+                                        <option>الصف الثالث</option>
+                                        <option>الصف الرابع</option>
+                                        <option>الصف الخامس</option>
+                                        <option>الصف السادس</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-gray-700 mb-2">نوع السلوك</label>
+                                    <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#8B4513] focus:border-transparent">
+                                        <option>جميع أنواع السلوك</option>
+                                        <option>السلوك الإيجابي</option>
+                                        <option>التنبيهات</option>
+                                        <option>السلوك السلبي</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button class="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition">عرض التقرير</button>
+                        </div>
+                        
+                        <div class="bg-[#f3e8d8] rounded-lg p-6 mb-6">
+                            <h4 class="text-lg font-bold text-[#8B4513] mb-4">ملخص التقرير</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="text-3xl font-bold text-green-600 mb-2">65</div>
+                                    <p class="text-gray-700">سلوك إيجابي</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="text-3xl font-bold text-amber-600 mb-2">23</div>
+                                    <p class="text-gray-700">تنبيهات</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="text-3xl font-bold text-red-600 mb-2">8</div>
+                                    <p class="text-gray-700">سلوك سلبي</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="bg-white border border-[#8B4513] text-[#8B4513] px-6 py-2 rounded-lg font-medium hover:bg-amber-50 transition mr-2">
+                                <i class="fas fa-download mr-1"></i> تحميل التقرير
+                            </button>
+                            <button class="bg-white border border-[#8B4513] text-[#8B4513] px-6 py-2 rounded-lg font-medium hover:bg-amber-50 transition">
+                                <i class="fas fa-envelope mr-1"></i> إرسال لولي الأمر
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Rewards Tab Content (Hidden by default) -->
+                    <div id="behavior-rewards-content" class="hidden">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">نظام المكافآت والتحفيز</h3>
+                            <p class="text-gray-600 mb-6">نظام متكامل لتحفيز الطلاب على السلوك الإيجابي ومكافأتهم على التميز والالتزام</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div class="bg-[#f3e8d8] rounded-lg p-6">
+                                    <h4 class="text-lg font-bold text-[#8B4513] mb-4">النقاط والمستويات</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-medal text-amber-500 ml-2"></i>
+                                            <span>يحصل الطالب على نقاط مقابل كل سلوك إيجابي</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-star text-amber-500 ml-2"></i>
+                                            <span>ترقية مستوى الطالب عند تجميع عدد محدد من النقاط</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-trophy text-amber-500 ml-2"></i>
+                                            <span>شارات تحفيزية للإنجازات المختلفة</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-gift text-amber-500 ml-2"></i>
+                                            <span>جوائز عينية للطلاب المتميزين في نهاية كل فصل دراسي</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-[#f3e8d8] rounded-lg p-6">
+                                    <h4 class="text-lg font-bold text-[#8B4513] mb-4">الطلاب المتميزون هذا الشهر</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center bg-white p-3 rounded-lg">
+                                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl ml-3">1</div>
+                                            <div class="flex-1">
+                                                <h5 class="font-medium">عبدالله محمد</h5>
+                                                <p class="text-sm text-gray-500">الصف الخامس (أ) - 120 نقطة</p>
+                                            </div>
+                                            <div class="text-amber-500"><i class="fas fa-crown"></i></div>
+                                        </div>
+                                        <div class="flex items-center bg-white p-3 rounded-lg">
+                                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl ml-3">2</div>
+                                            <div class="flex-1">
+                                                <h5 class="font-medium">نورة سعد</h5>
+                                                <p class="text-sm text-gray-500">الصف السادس (أ) - 115 نقطة</p>
+                                            </div>
+                                            <div class="text-amber-500"><i class="fas fa-medal"></i></div>
+                                        </div>
+                                        <div class="flex items-center bg-white p-3 rounded-lg">
+                                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-[#8B4513] font-bold text-xl ml-3">3</div>
+                                            <div class="flex-1">
+                                                <h5 class="font-medium">فهد عبدالرحمن</h5>
+                                                <p class="text-sm text-gray-500">الصف الرابع (ب) - 105 نقطة</p>
+                                            </div>
+                                            <div class="text-amber-500"><i class="fas fa-medal"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition">عرض تفاصيل نظام المكافآت</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">إرشادات للمعلمين وأولياء الأمور</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-medium text-[#8B4513] mb-3">للمعلمين</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>تسجيل الملاحظات السلوكية بشكل يومي</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>التركيز على تعزيز السلوك الإيجابي أكثر من معاقبة السلوك السلبي</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>التواصل المستمر مع أولياء الأمور لمناقشة سلوك الطلاب</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>استخدام نظام المكافآت لتحفيز الطلاب على تحسين سلوكهم</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-[#8B4513] mb-3">لأولياء الأمور</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>متابعة تقارير السلوك بشكل دوري</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>مناقشة الملاحظات السلوكية مع الأبناء بطريقة إيجابية</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>التعاون مع المدرسة في تعزيز السلوك الإيجابي</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 ml-2"></i>
+                                <span>تقديم مكافآت إضافية للأبناء عند تحقيق مستويات متقدمة في السلوك</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">مميزات منصة EduGuardian</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">نقدم لك مجموعة متكاملة من الأدوات التي تساعدك على إدارة العملية التعليمية بكفاءة عالية</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md transition duration-300 card-hover">
+                    <div class="w-14 h-14 feature-icon rounded-full flex items-center justify-center mb-5 text-white">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">تتبع تقدم الطلاب</h3>
+                    <p class="text-gray-600">متابعة مستوى الطلاب وتقدمهم الأكاديمي بشكل مستمر من خلال تقارير تفصيلية وإحصائيات دقيقة.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md transition duration-300 card-hover">
+                    <div class="w-14 h-14 feature-icon rounded-full flex items-center justify-center mb-5 text-white">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">التواصل مع أولياء الأمور</h3>
+                    <p class="text-gray-600">إمكانية التواصل المباشر مع أولياء الأمور وإطلاعهم على مستوى أبنائهم وإشعارهم بالمستجدات.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md transition duration-300 card-hover">
+                    <div class="w-14 h-14 feature-icon rounded-full flex items-center justify-center mb-5 text-white">
+                        <i class="fas fa-book text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">إدارة المناهج الدراسية</h3>
+                    <p class="text-gray-600">تنظيم المناهج الدراسية وتخطيط الدروس وتوزيع المهام والواجبات على الطلاب بطريقة منظمة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 gradient-bg text-white px-4">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-3xl font-bold mb-6">ابدأ رحلتك مع EduGuardian اليوم</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">انضم إلى آلاف المؤسسات التعليمية التي تستخدم منصتنا لتحسين جودة التعليم وتسهيل العملية الإدارية</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-[#8B4513] px-6 py-3 rounded-lg font-medium hover:bg-amber-50 transition">تجربة مجانية لمدة 30 يوم</button>
+                <button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition">تواصل مع فريق المبيعات</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#6B3E26] text-white py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="text-white">Edu</span><span class="text-amber-200">Guardian</span>
+                    </h3>
+                    <p class="text-amber-100 mb-4">منصة تعليمية متكاملة لإدارة العملية التعليمية وتتبع تقدم الطلاب بكل سهولة وفعالية.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">المميزات</a></li>
+                        <li><a href="#teachers" class="text-amber-100 hover:text-white transition">المعلمون</a></li>
+                        <li><a href="#behavior" class="text-amber-100 hover:text-white transition">السلوك</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">الدعم</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">مركز المساعدة</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">الأسئلة الشائعة</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">الشروط والأحكام</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 ml-2 text-amber-300"></i>
+                            <span class="text-amber-100">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 ml-2 text-amber-300"></i>
+                            <span class="text-amber-100">+966 123 456 789</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 ml-2 text-amber-300"></i>
+                            <span class="text-amber-100">info@eduguardian.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-amber-800 mt-10 pt-6 text-center text-amber-100">
+                <p>&copy; 2023 EduGuardian. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Teacher Filter
+        const teacherFilterBtns = document.querySelectorAll('.teacher-filter-btn');
+        const teacherCards = document.querySelectorAll('.teacher-card');
+        
+        teacherFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                teacherFilterBtns.forEach(b => b.classList.remove('active', 'bg-white'));
+                // Add active class to clicked button
+                btn.classList.add('active', 'bg-white');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                teacherCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Behavior Tabs
+        const tabBehaviorOverview = document.getElementById('tab-behavior-overview');
+        const tabBehaviorReports = document.getElementById('tab-behavior-reports');
+        const tabBehaviorRewards = document.getElementById('tab-behavior-rewards');
+        
+        const behaviorOverviewContent = document.getElementById('behavior-overview-content');
+        const behaviorReportsContent = document.getElementById('behavior-reports-content');
+        const behaviorRewardsContent = document.getElementById('behavior-rewards-content');
+        
+        tabBehaviorOverview.addEventListener('click', () => {
+            // Update tab styles
+            tabBehaviorOverview.classList.add('tab-active');
+            tabBehaviorOverview.classList.remove('text-gray-500');
+            tabBehaviorReports.classList.remove('tab-active');
+            tabBehaviorReports.classList.add('text-gray-500');
+            tabBehaviorRewards.classList.remove('tab-active');
+            tabBehaviorRewards.classList.add('text-gray-500');
+            
+            // Show/hide content
+            behaviorOverviewContent.classList.remove('hidden');
+            behaviorReportsContent.classList.add('hidden');
+            behaviorRewardsContent.classList.add('hidden');
+        });
+        
+        tabBehaviorReports.addEventListener('click', () => {
+            // Update tab styles
+            tabBehaviorOverview.classList.remove('tab-active');
+            tabBehaviorOverview.classList.add('text-gray-500');
+            tabBehaviorReports.classList.add('tab-active');
+            tabBehaviorReports.classList.remove('text-gray-500');
+            tabBehaviorRewards.classList.remove('tab-active');
+            tabBehaviorRewards.classList.add('text-gray-500');
+            
+            // Show/hide content
+            behaviorOverviewContent.classList.add('hidden');
+            behaviorReportsContent.classList.remove('hidden');
+            behaviorRewardsContent.classList.add('hidden');
+        });
+        
+        tabBehaviorRewards.addEventListener('click', () => {
+            // Update tab styles
+            tabBehaviorOverview.classList.remove('tab-active');
+            tabBehaviorOverview.classList.add('text-gray-500');
+            tabBehaviorReports.classList.remove('tab-active');
+            tabBehaviorReports.classList.add('text-gray-500');
+            tabBehaviorRewards.classList.add('tab-active');
+            tabBehaviorRewards.classList.remove('text-gray-500');
+            
+            // Show/hide content
+            behaviorOverviewContent.classList.add('hidden');
+            behaviorReportsContent.classList.add('hidden');
+            behaviorRewardsContent.classList.remove('hidden');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94975fdc748ae243',t:'MTc0ODg3MTc1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
